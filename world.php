@@ -8,21 +8,39 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Get the 'country' parameter from the URL
-    $country = isset($_GET['country']) ? $_GET['country'] : '';
+    $input = isset($_GET['name']) ? $_GET['name'] : '';
 
-    // Modify the SQL query to fetch information for the specified country or partial match
-    $sql = "SELECT * FROM countries WHERE name LIKE :country";
+    $sql = "SELECT * FROM countries WHERE name LIKE :name";
+
     $stmt = $conn->prepare($sql);
-    
-    // Allow partial matches by adding '%' to the beginning and end of the country name
-    $stmt->bindValue(':country', '%' . $country . '%', PDO::PARAM_STR);
-
+    $stmt->bindValue(':name', '%' . $input . '%', PDO::PARAM_STR);
     $stmt->execute();
 
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode($results);
+    // Output an HTML table
+    if (count($results) > 0) {
+        echo '<table border="1">';
+        echo '<tr>';
+        echo '<th>Country Name</th>';
+        echo '<th>Continent</th>';
+        echo '<th>Independence Year</th>';
+        echo '<th>Head of State</th>';
+        echo '</tr>';
+
+        foreach ($results as $row) {
+            echo '<tr>';
+            echo '<td>' . $row['name'] . '</td>';
+            echo '<td>' . $row['continent'] . '</td>';
+            echo '<td>' . $row['independence_year'] . '</td>';
+            echo '<td>' . $row['head_of_state'] . '</td>';
+            echo '</tr>';
+        }
+
+        echo '</table>';
+    } else {
+        echo 'No results found.';
+    }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

@@ -1,23 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('lookup').addEventListener('click', function () {
-        const country = document.getElementById('country').value;
+    document.getElementById('lookupCountry').addEventListener('click', function () {
+        lookupCountry();
+    });
 
-        fetch(`world.php?country=${country}`)
-            .then(response => response.json())
+    function lookupCountry() {
+        const input = document.getElementById('country').value;
+        const url = `world.php?type=countries&name=${input}`;
+
+        fetch(url)
+            .then(response => response.text())
             .then(data => {
-                document.getElementById('result').innerHTML = formatData(data);
+                document.getElementById('result').innerHTML = data;
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    });
-
-    function formatData(data) {
-        let resultHTML = '<ul>';
-        data.forEach(entry => {
-            resultHTML += `<li>${entry.name} is ruled by ${entry.head_of_state}</li>`;
-        });
-        resultHTML += '</ul>';
-        return resultHTML;
     }
 });
