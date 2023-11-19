@@ -29,7 +29,7 @@ USE world;
 DROP TABLE IF EXISTS `cities`;
 CREATE TABLE `cities` (
   `id` int(11) NOT NULL auto_increment,
-  `name` char(35) NOT NULL default '',
+  `city_name` char(35) NOT NULL default '',
   `country_code` char(3) NOT NULL default '',
   `district` char(20) NOT NULL default '',
   `population` int(11) NOT NULL default '0',
