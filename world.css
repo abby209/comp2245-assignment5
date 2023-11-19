@@ -1,1 +1,99 @@
-/* Add your own styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: navy;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f7fbfc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#controls {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input {
+    padding: 8px;
+}
+
+#lookupCountry {
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+}
+
+#lookupCountry:hover {
+    background-color: #218838;
+}
+
+#lookupCities {
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+}
+
+#lookupCities:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #5c5c5c;
+    color: #fff;
+    width:15%;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) {
+    background-color: #bfe0e6; /* Baby blue color for even rows */
+}
+
+tr:nth-child(odd) {
+    background-color: #fff; /* White color for odd rows */
+}
+
+

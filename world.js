@@ -1,11 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('lookupCountry').addEventListener('click', function () {
-        lookupCountry();
+        lookup('countries');
     });
 
-    function lookupCountry() {
+    document.getElementById('lookupCities').addEventListener('click', function () {
+        lookup('cities');
+    });
+
+    function lookup(type) {
         const input = document.getElementById('country').value;
-        const url = `world.php?type=countries&name=${input}`;
+        const url = `world.php?type=${type}&name=${input}`;
 
         fetch(url)
             .then(response => response.text())
